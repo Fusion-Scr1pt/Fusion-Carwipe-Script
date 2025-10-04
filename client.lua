@@ -27,7 +27,7 @@ local function openCarWipeMenu()
         title = 'Vehicle Wipe',
         options = {
             {
-                title = '🚨 Wipe nu',
+                title = 'Wipe nu',
                 description = 'Verwijder alle voertuigen direct (server-side)',
                 icon = 'car-burst',
                 onSelect = function()
@@ -35,7 +35,7 @@ local function openCarWipeMenu()
                 end
             },
             {
-                title = '🕒 Plan wipe over 10 minuten',
+                title = 'Plan wipe over 10 minuten',
                 description = 'Alerts op 10, 5, 2, 1 min en 30s → 0',
                 icon = 'hourglass',
                 onSelect = function()
@@ -43,7 +43,7 @@ local function openCarWipeMenu()
                 end
             },
             {
-                title = '👤 Wipe voertuigen van speler',
+                title = 'Wipe voertuigen van speler',
                 description = 'Voer een server ID in',
                 icon = 'user-slash',
                 onSelect = function()
