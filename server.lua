@@ -138,7 +138,7 @@ RegisterCommand('carwipe', function(source)
     end
     local xPlayer = ESX.GetPlayerFromId(src)
     if not isStaff(xPlayer) then
-        notifyPlayer(src, '❌ Geen permissie (minimaal mod vereist).', 'error')
+        notifyPlayer(src, 'Geen permissie (minimaal mod vereist).', 'error')
         return
     end
     TriggerClientEvent('vw:client:openCarwipeMenu', src)
@@ -152,12 +152,12 @@ RegisterNetEvent('vw:server:wipeNow', function()
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     if not isStaff(xPlayer) then
-        notifyPlayer(src, '❌ Geen permissie.', 'error'); return
+        notifyPlayer(src, 'Geen permissie.', 'error'); return
     end
 
     notifyAll('🚨 Vehicle wipe gestart...', 'warning')
     local count = wipeAllVehicles()
-    notifyAll(('✅ Vehicle wipe klaar: %d voertuig(en) verwijderd.'):format(count), 'success')
+    notifyAll(('Vehicle wipe klaar: %d voertuig(en) verwijderd.'):format(count), 'success')
     print(('[VehicleWipe NOW] %d vehicles removed by %s'):format(count, xPlayer.getName()))
 end)
 
@@ -168,7 +168,7 @@ RegisterNetEvent('vw:server:schedule10', function()
         notifyPlayer(src, '❌ Geen permissie.', 'error'); return
     end
     if scheduled then
-        notifyPlayer(src, '⚠️ Er staat al een wipe gepland.', 'warning'); return
+        notifyPlayer(src, 'Er staat al een wipe gepland.', 'warning'); return
     end
     scheduled = true
     local who = xPlayer.getName()
@@ -187,7 +187,7 @@ RegisterNetEvent('vw:server:schedule10', function()
             if sec <= 0 then
                 notifyAll('🚨 Vehicle wipe gestart...', 'warning')
                 local count = wipeAllVehicles()
-                notifyAll(('✅ Geplande wipe klaar: %d voertuig(en) verwijderd.'):format(count), 'success')
+                notifyAll(('Geplande wipe klaar: %d voertuig(en) verwijderd.'):format(count), 'success')
                 print(('[VehicleWipe RUN] %d vehicles removed (scheduled by %s)'):format(count, who))
                 scheduled = false
                 return
@@ -204,17 +204,17 @@ RegisterNetEvent('vw:server:wipePlayer', function(targetId)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     if not isStaff(xPlayer) then
-        notifyPlayer(src, '❌ Geen permissie.', 'error'); return
+        notifyPlayer(src, 'Geen permissie.', 'error'); return
     end
 
     targetId = tonumber(targetId or 0)
     if not targetId or not GetPlayerName(targetId) then
-        notifyPlayer(src, '❌ Ongeldige server ID.', 'error'); return
+        notifyPlayer(src, 'Ongeldige server ID.', 'error'); return
     end
 
     local removed = wipeVehiclesOfPlayer(targetId)
     local tName = GetPlayerName(targetId) or ('ID ' .. targetId)
-    notifyPlayer(src, ('✅ %d voertuig(en) van %s verwijderd.'):format(removed, tName), 'success')
+    notifyPlayer(src, ('%d voertuig(en) van %s verwijderd.'):format(removed, tName), 'success')
     print(('[VehicleWipe PLAYER] %d vehicles removed for %s (%d) by %s'):format(
         removed, tName, targetId, xPlayer.getName()))
 end)
